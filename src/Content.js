@@ -1,14 +1,22 @@
-import React from 'react'
+import React from 'react';
+/* To use useState hook in react _which reacts to changes in component state- we will have to import it from  react */
 
+import { useState } from 'react';/* Now we can use the useState component inside of our component */
 const Content = () => {
+    /* We will start out by defining what we will use for state */
+    const [name, setName] = useState("Kahwai");
+    /* One more example of useState */
+    const [count,setCount] = useState(0)
     const handleNameChange = () =>{
         const names = ["Bob","Kevin","Dave","Kahwai"];
         const interger = Math.floor(Math.random()*3 + 1);
-        return names[interger];
+        setName (names[interger]);
       }
       /* React can respond to various click events */
       const handleClick = () =>{
-        console.log("I have been clicked")/* console returns I have been clicked */
+        setCount(count + 1);
+        setCount(count + 1);
+        console.log(count)/* console returns I have been clicked */
       }
       /* Passing in a parameter to a function */
       const handleClick2 = (name) =>{
@@ -29,15 +37,17 @@ const Content = () => {
     <main>
         <p 
         onDoubleClick={handleClick4}>
-        Hello {handleNameChange()}!
+        Hello {name}!
         </p>
-        <button onClick={handleClick}>Click me</button>
+        <button onClick={handleNameChange}>Change name</button>{/* if (on click) event is triggerd by clicking this button handleNameChange fn is invoked that the fires the useState hook */}
         <button onClick={()=>{
             handleClick2('KEVIN')}
         }>Click me</button>
         <button onClick={(event)=>{
             handleClick3(event)}
         }>Click me</button>
+        <button onClick={handleClick
+        }>Click me</button>{/* on click the console returns the value of the current state(count) which is 0 */}
     </main>
     
   )
