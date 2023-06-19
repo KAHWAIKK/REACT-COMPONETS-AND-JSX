@@ -1,15 +1,15 @@
 /* import logo from './logo.svg'; */
-import './App.css';
+/* import './App.css'; */
 import Header from './Header';
 import Content from './Content';
 import Footer from './Footer';
 
 function App() {
-  const handleNameChange = () =>{
+ /*  const handleNameChange = () =>{
     const names = ["Bob","Kevin","Dave","Kahwai"];
     const interger = Math.floor(Math.random()*3 + 1);
     return names[interger];
-  }
+  } */
   return (
     <div className="App">
       {/* <header className="App-header"> */}
