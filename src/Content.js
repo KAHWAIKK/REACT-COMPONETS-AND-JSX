@@ -1,16 +1,24 @@
 import React from 'react';
 /* To use useState hook in react _which reacts to changes in component state- we will have to import it from  react */
 
-import { useState } from 'react';/* Now we can use the useState component inside of our component */
+import { useState } from 'react';/* Now we can use the useState hook inside of our component */
+/* the useState hook provides us with a way to make a value reactive and update the new value in the template */
 const Content = () => {
     /* We will start out by defining what we will use for state */
+    /* We will store the value that useState hook returns in a variable with 2 keywords,this is because the useState returns two values */
+
+    /* The parameter that the useState takes could ba an array,object,boolean,number..it really doesnt matter the type of data */
     const [name, setName] = useState("Kahwai");
     /* One more example of useState */
-    const [count,setCount] = useState(0)
+    const [count,setCount] = useState(0);
+    const [age,setAge] = useState(25);
     const handleNameChange = () =>{
         const names = ["Bob","Kevin","Dave","Kahwai"];
         const interger = Math.floor(Math.random()*3 + 1);
         setName (names[interger]);
+        const ages = [4,45,36,89];
+        const interger1 = Math.floor(Math.random()*3 + 1);
+        setAge(ages[interger1]);
       }
       /* React can respond to various click events */
       const handleClick = () =>{
@@ -18,9 +26,10 @@ const Content = () => {
         setCount(count + 1);
         console.log(count)/* console returns I have been clicked */
       }
+      
       /* Passing in a parameter to a function */
       const handleClick2 = (name) =>{
-        console.log(`${name} has been clicked`)/* console returns KEVIN has been clicked */
+        console.log(`${name} has been clicked `)/* console returns KEVIN has been clicked */
       }
       /* Accessing the event Object using click event function */
       const handleClick3 = (e) =>{
@@ -37,7 +46,11 @@ const Content = () => {
     <main>
         <p 
         onDoubleClick={handleClick4}>
-        Hello {name}!
+        Hello {name}! 
+        </p>
+        <p 
+        onDoubleClick={handleNameChange}>
+         I am {age} years old
         </p>
         <button onClick={handleNameChange}>Change name</button>{/* if (on click) event is triggerd by clicking this button handleNameChange fn is invoked that the fires the useState hook */}
         <button onClick={()=>{
