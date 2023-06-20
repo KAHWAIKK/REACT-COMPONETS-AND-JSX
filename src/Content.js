@@ -41,6 +41,8 @@ const Content = () => {
       /* React can also listen to other events as well, one of those events is a double click event */
       const handleClick4 = () =>{
         console.log("I have been double clicked")/* console returns I have been clicked */
+
+        /* It is important to note that when you need a reactive value or something that might change at some point we use the useState hook, we pass in an initial value as a parameter to that useState function which will be displayed in the template,and then call the setFunction that then updates that value by triggering a re-render*/
       }
   return (
     <main>
