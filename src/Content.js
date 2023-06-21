@@ -42,12 +42,16 @@ const Content = () => {
           const listItems = items.filter((item) => item.id !== id);
           setItems(listItems);
           /* Saving state to local storage */
-          localStorage.setItem('shoppingList',JSON.stringify(listItems));/* you will not see a change in the app immediately */
+          localStorage.setItem('shoppingList',JSON.stringify(listItems));
+          /* you will not see a change in the app immediately */
+
+          /* However you will notice that after deleting all the items in the list, we have a blank web page,we need to have a message for the user,this can be done through adding an expression in our JSX template from line 54-ifCondition and ending at line 82*/
 
         }
     
     return (
       <main>
+          {items.length ? (
             <ul>
              {items.map((item) =>(
                 //each list requires a key attribute
@@ -74,6 +78,9 @@ const Content = () => {
                 </li>
               ))}
             </ul>
+          ) : (
+            <p style={{ marginTop :'2rem'}}>Your List is Empty</p>
+          )}
       </main>
       )
   }
