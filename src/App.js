@@ -5,8 +5,12 @@ import Content from './Content';
 import Footer from './Footer';
 import { useState } from 'react';
 
+/* Lets say footer needs acces to the listItems,but they are allmested in the content component and this are sibling component we therefore cant reach to the content component and get the data that we need, so we will take the data from the content component move it up to the app content then drill it down to both content and footer, we cut the array(data) from the content component and put it here in the app.js file*/
+/* We will then pass the items and setItems to content */
+
+
 function App() {
- /*  const handleNameChange = () =>{
+ /* const handleNameChange = () =>{
     const names = ["Bob","Kevin","Dave","Kahwai"];
     const interger = Math.floor(Math.random()*3 + 1);
     return names[interger];
@@ -73,16 +77,20 @@ function App() {
         <p>{/* JSX accepts javascript expressions placed inside curly brackets as shown below, a string-{'kevin'}-,a number-{1}-,an array-{[1,2,3]}-.Even if you remove the curly braces JSX will render the data as text -[1,2,3]-.We cannot however display an object as shown or a boolean.Note if you want to comment something out then you have to do that inside of curly brackets */}</p>
         <p>{/* {nameA} */}</p>
         <p>{/* commenting done inside curly brackets */} {/* {nameA} */}</p>
-     {/*  </header> */}
+        {/*  </header> */}
       <Header title = 'Grocery List' ></Header>
       <Content 
         items={items}
         handleCheck={handleCheck}
         handleDelete={handleDelete}
       ></Content>
-      <Footer></Footer>
+      <Footer
+      length={items.length}
+      ></Footer>
     </div>
   );
 }
 
 export default App;
+
+
