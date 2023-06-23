@@ -4,6 +4,7 @@ import Header from './Header';
 import Content from './Content';
 import Footer from './Footer';
 import { useState } from 'react';
+import AddItem from './AddItem';
 
 /* Lets say footer needs acces to the listItems,but they are allmested in the content component and this are sibling component we therefore cant reach to the content component and get the data that we need, so we will take the data from the content component move it up to the app content then drill it down to both content and footer, we cut the array(data) from the content component and put it here in the app.js file*/
 /* We will then pass the items and setItems to content */
@@ -32,6 +33,8 @@ function App() {
       item: 'Item 3'
     }
   ]);
+/* to make the additem a controlled inpiut we need to tie it to state */
+  const [newItem,setNewItem] = useState("")
 
   
   const handleCheck = (id) =>{
@@ -55,7 +58,11 @@ function App() {
       /* you will not see a change in the app immediately */
 
       /* However you will notice that after deleting all the items in the list, we have a blank web page,we need to have a message for the user,this can be done through adding an expression in our JSX template from line 54-ifCondition and ending at line 82*/
-
+      }
+      /* Adding the handleSubmit that will now submit  */
+      const handleSubmit = (e)=>{
+        e.preventDefault();/* this function prevents the default nature of a page to reload upon submitting */
+        console.log('submitted')
       }
   return (
     <div className="App">
@@ -79,6 +86,11 @@ function App() {
         <p>{/* commenting done inside curly brackets */} {/* {nameA} */}</p>
         {/*  </header> */}
       <Header title = 'Grocery List' ></Header>
+      <AddItem
+        newItem={newItem}
+        setNewItem={setNewItem}
+        handleSubmit={handleSubmit}
+      ></AddItem>
       <Content 
         items={items}
         handleCheck={handleCheck}
@@ -93,4 +105,4 @@ function App() {
 
 export default App;
 
-
+/* You will notice that even after we delete items we could refresh the page and our default list we be displayed,,this is because we are using useState functionality even if we save to localStorage ,using useState gives usnthe opportunity to add items which local storage cant perform, we will do that with a new component called AddItem inside of the AddFile js file*/
