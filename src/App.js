@@ -124,8 +124,6 @@ function App() {
         handleCheck={handleCheck}
         handleDelete={handleDelete}
       ></Content>
-
-      
       <Footer
       length={items.length}
       ></Footer>
